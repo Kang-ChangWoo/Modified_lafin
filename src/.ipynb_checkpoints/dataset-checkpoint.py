@@ -50,7 +50,10 @@ class Dataset(torch.utils.data.Dataset):
 
         # load image
         img = cv2.imread(self.data[index])
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
+        print("img dist: ", np.mean(img))
+        
         if self.config.MODEL != 3:
             landmark = self.load_lmk([size, size], index, img.shape)
         else: ## test on stage 3 doesn't need ground truth landmarks
@@ -149,6 +152,7 @@ class Dataset(torch.utils.data.Dataset):
         if mask_type == 3:
             mask_index = random.randint(0, len(self.mask_data) - 1)
             mask = cv2.imread(self.mask_data[mask_index])
+            mask = cv2.cvtColor(mask, cv2.COLOR_BGR2RGB)
             mask = self.resize(mask, imgh, imgw)
             mask = (mask > 0).astype(np.uint8) * 255
             return mask
@@ -156,9 +160,15 @@ class Dataset(torch.utils.data.Dataset):
         # test mode: load mask non random
         if mask_type == 6:
             mask = cv2.imread(self.mask_data[index%len(self.mask_data)])
+            mask = cv2.cvtColor(mask, cv2.COLOR_BGR2RGB)
             mask = self.resize(mask, imgh, imgw, centerCrop=False)
-            mask = rgb2gray(mask)
-            mask = (mask > 0).astype(np.uint8) * 255
+            # mask = rgb2gray(mask)
+            mask = cv2.cvtColor(mask, cv2.COLOR_RGB2GRAY).astype(np.uint8)
+            print(mask)
+            #mask = (mask > 0).astype(np.uint8) * 255
+            
+            print("mask dist: ", np.mean(mask))
+            
             return mask
 
     def to_tensor(self, img):

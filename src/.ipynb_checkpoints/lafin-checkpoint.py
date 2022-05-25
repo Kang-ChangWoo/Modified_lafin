@@ -10,6 +10,8 @@ from .utils import Progbar, create_dir, stitch_images, imsave
 from .metrics import PSNR
 from cv2 import circle
 from PIL import Image
+import cv2
+import matplotlib.pyplot as plt
 
 '''
 This repo is modified basing on Edge-Connect
@@ -364,6 +366,29 @@ class Lafin():
 
             # inpaint with joint model
             elif model == 3:
+                
+                print(images)
+                print(torch.mean(images))
+                
+                #print(masks)
+                #print(torch.mean(masks))
+                print(type(images))
+                
+                #imsave(images_output[0], file_name)
+                #imsave(images.cpu().detach().numpy(), "/root/dev/Modified_lafin/images.png")
+                #imsave(masks.cpu().detach().numpy(), "/root/dev/Modified_lafin/masks.png")
+                #imsave((images*(1-masks) + masks).cpu().detach().numpy(), "/root/dev/Modified_lafin/computed.png")
+                #imsave(images_output[0], file_name)
+                #imsave(images[0].permute(1,2, 0)*255, "/root/dev/Modified_lafin/images.png")
+                #imsave(masks[0].permute(1,2, 0)*255, "/root/dev/Modified_lafin/masks.png")
+                #imsave((images[0].permute(1,2, 0)*(1-masks[0].permute(1,2, 0)) + masks[0].permute(1,2, 0))*255, "/root/dev/Modified_lafin/computed.png")
+                
+                #_, pos = plt.subplots(nrows=1, ncols=3, figsize=(10, 10))
+                #pos[0].imshow(images[0].permute(2, 1, 0).cpu().detach().numpy())
+                #pos[1].imshow(masks[0].permute(2, 1, 0).cpu().detach().numpy())
+                #pos[2].imshow((images[0].permute(2, 1, 0)*(1-masks[0].permute(2, 1, 0)) + masks[0].permute(2, 1, 0)).cpu().detach().numpy())
+                #plt.show()
+                
                 output_landmark = self.landmark_model(images * (1 - masks) + masks,  masks)
 
                 landmark_pred = (output_landmark.detach()).reshape(-1, self.config.LANDMARK_POINTS, 2).long()
@@ -407,7 +432,16 @@ class Lafin():
                 landmark_mask_image = images*(1-masks)+masks
                 landmark_mask_image = (landmark_mask_image[0].cpu().numpy().copy().transpose(1,2,0)*255).astype('uint8')
                 landmark_mask_image = landmark_mask_image.copy()
+                
+                print("value!!:",landmark_pred[0,0,0])
+                
                 for i in range(landmark_pred.shape[1]):
+                    
+                    print("first dot(x): ", landmark_pred[0,i,0])
+                    print("first dot(y): ", landmark_pred[0,i,1])
+                    print("second dot(x): ", landmark_pred[0,i,0])
+                    print("second dot(y): ", landmark_pred[0,i,1])
+                    
                     circle(landmark_mask_image,(int(landmark_pred[0,i,0]),int(landmark_pred[0,i,1])),radius=2,color=(0,255,0),thickness=-1)
                     circle(pure_landmark_image, (int(landmark_pred[0, i, 0]), int(landmark_pred[0, i, 1])), radius=2,
                            color=(0, 255, 0), thickness=-1)
