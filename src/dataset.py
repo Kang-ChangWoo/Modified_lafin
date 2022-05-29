@@ -50,6 +50,7 @@ class Dataset(torch.utils.data.Dataset):
 
         # load image
         img = cv2.imread(self.data[index])
+        print(img)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         print("img dist: ", np.mean(img))

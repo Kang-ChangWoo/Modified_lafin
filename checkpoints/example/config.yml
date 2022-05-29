@@ -8,7 +8,7 @@ LANDMARK_POINTS: 68 # 68 for celeba, celeba-hq and 300w, 98 for wflw
 
 TRAIN_INPAINT_IMAGE_FLIST: 
 VAL_INPAINT_IMAGE_FLIST: 
-TEST_INPAINT_IMAGE_FLIST: ./datasets/example_images.flist
+TEST_INPAINT_IMAGE_FLIST: ./datasets/example_images_dgms.flist
 
 TRAIN_INPAINT_LANDMARK_FLIST: 
 VAL_INPAINT_LANDMARK_FLIST: 
@@ -16,7 +16,7 @@ TEST_INPAINT_LANDMARK_FLIST:
 
 TRAIN_MASK_FLIST: 
 VAL_MASK_FLIST: 
-TEST_MASK_FLIST: ./datasets/example_masks.flist
+TEST_MASK_FLIST: ./datasets/example_masks_dgms.flist
 
 TRAIN_LANDMARK_LANDMARK_FLIST: 
 TEST_LANDMARK_LANDMARK_FLIST:

@@ -1,2 +1,5 @@
-examples_dgmsproj/*
-
+*.pth
+checkpoints/examples/results/*
+checkpoints/*
+experiments/*
+examples/*

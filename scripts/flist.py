@@ -16,5 +16,7 @@ for root, dirs, files in os.walk(args.path):
         if os.path.splitext(file)[1] in ext:
             images.append(os.path.join(root, file))
 
+# added
+images = ['/root/dev/Modified_lafin' + i[2:] for i in images]
 images = sorted(images)
 np.savetxt(args.output, images, fmt='%s')
