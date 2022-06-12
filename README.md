@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 아래의 데이터셋을 다운로드 받아야 한다.  
 DGMS 강의 간 제공된 평가 데이터셋의 경우 600개의 이미지와 마스크로 구성되어 있고, 전처리가 필요하기 때문에 본 Git 저장소에 저장해뒀기 때문에 따로 저장할 필요가 없다.
-1. [DGSM 평가 데이터](examples/001.png)
+1. [DGSM 평가 데이터](examples/images/001.png)
 2. [CelebA pretrained weights](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G)
 
 
