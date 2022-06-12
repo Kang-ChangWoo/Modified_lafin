@@ -11,7 +11,7 @@
 ![image](lafin.png)
 
 ### 필요한 라이브러리 (Prerequisites)
-1.Python 3.7
+1. Python 3.7
 2. Pytorch 1.0
 3. NVIDIA GPU + CUDA cuDNN
 
@@ -19,7 +19,7 @@
 ---------------------------------
 1. 본 저장소를 클론한다.
 ```
-git clone https://github.com/YaN9-Y/lafin
+git clone https://github.com/Kang-ChangWoo/Modified_lafin.git
 cd lafin-master
 ```
 * Install Pytorch
