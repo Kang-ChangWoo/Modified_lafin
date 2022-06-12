@@ -28,16 +28,18 @@ pip install -r requirements.txt
 ```
 
 ### 재현 (implementation)
-**1. 데이터셋 다운로드하기**
+**1. 데이터셋 다운로드 및 파일목록 생성하기**
 
 
-원 논문에서는 1)이미지 인페인팅 부분과 2) 증강된 랜드마크 검출 파트가 나눠져 있지만, 본 과정에서는 이미지 인페인팅만 실행하고자 한다. 아래의 데이터셋을 다운로드 받아야 한다.
-1. [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
-2. [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans)
-3. [DGSM_evaluation]
-4. [CelebA pretrained weights](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G)
-5. [CelebA-HQ pretrained weights](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) 
+아래의 데이터셋을 다운로드 받아야 한다.  
+DGMS 강의 간 제공된 평가 데이터셋의 경우 600개의 이미지와 마스크로 구성되어 있고, 전처리가 필요하기 때문에 본 Git 저장소에 저장해뒀기 때문에 따로 저장할 필요가 없다.
+1. [DGSM 평가 데이터](examples/001.png)
+2. [CelebA pretrained weights](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G)
 
+
+**2. 기학습된 네트워크 가중치 다운로드 받기**
+1. [CelebA pretrained weights](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G)
+2. [CelebA-HQ pretrained weights](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) 
 다운로드를 받은 이후엔, train, test, validation 을 각각 나눠서 설정해줘야 하며, [`scripts/flist.py`](scripts/flist.py)를 실행하여 관련된 파일 목록을 생성해줘야 한다.
 예를 들어 celebA 데이터셋의 파일목록을 생성하고 싶다면 아래를 실행시켜야 한다.
 ```
