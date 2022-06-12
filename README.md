@@ -3,10 +3,9 @@
 - 코드 및 논문은 "[LaFIn: Generative Landmark Guided Face Inpainting](https://arxiv.org/abs/1908.03852)" [PRCV](https://link.springer.com/chapter/10.1007/978-3-030-60633-6_2) 를 참조합니다.
 - 원 문서에 대한 설명은 [`origin_repo/README.md`](origin_repo/README.md) 파일에 저장되어 있다.
 
-Introduction
+### 예시 결과물 (Inpainting results)
 ---------------------------------
-This paper studies an effective deep learning based strategy to inpaint face images in the wild, which comprises of a facial landmark predicting subnet and an image inpainting subnet. Concretely, given partial observation, the landmark predictor aims to provide the structural information (e.g. topological relationship and expression) of incomplete faces, while the inpaintor is to generate plausible appearance (e.g. gender and ethnicity) conditioned on the predicted landmarks. In
-addition, we validated that high-quality completed faces together with their landmarks can be utilized as augmented data to further improve the performance of (any) landmark predictor.
+- 참고를 위한 인페인팅 결과물은 아래와 같습니다.
 
 ![image](lafin.png)
 
