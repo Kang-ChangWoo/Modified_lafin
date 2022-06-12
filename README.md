@@ -1,8 +1,4 @@
-ModifiedLaFIn: Generative Landmark Guided Face Inpainting
-=================================
-This is the PyTorch implementation of paper 'LaFIn: Generative Landmark Guided Face Inpainting', which is accepted by PRCV2020 as Best Student Paper Runner-up. [arXiv](https://arxiv.org/abs/1911.11394), [PRCV](https://link.springer.com/chapter/10.1007/978-3-030-60633-6_2)
-
-# ModifiedStructureFlow
+# ModifiedLaFIn: Generative Landmark Guided Face Inpainting
 - 본 저장소는 UNIST DGMS 강의 간 진행한 프로젝트에서, 성능 비교를 위해서 재현한 선행연구입니다. 
 - 코드 및 논문은 "[LaFIn: Generative Landmark Guided Face Inpainting](https://arxiv.org/abs/1908.03852)" [PRCV](https://link.springer.com/chapter/10.1007/978-3-030-60633-6_2) 를 참조합니다.
 - 원 문서에 대한 설명은 [`origin_repo/README.md`](origin_repo/README.md) 파일에 저장되어 있다.
