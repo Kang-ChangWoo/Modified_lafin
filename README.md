@@ -30,43 +30,27 @@ pip install -r requirements.txt
 
 ### 재현 (implementation)
 **1. 데이터셋 다운로드하기**
----------------------------------
-Our repo has two parts, 1)Image Inpainting Part and 2)Augmented Landmark Detection Part. If you only want to test Image Inpainting Part, you're safe to ignore the contents about Augmented Landmark Dectection Part.
-### 1.Image Inpaint Part
-#### 1) Images: 
-We use [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) and [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans) datasets for inpaint. 
+원 논문에서는 1)이미지 인페인팅 부분과 2) 증강된 랜드마크 검출 파트가 나눠져 있지만, 본 과정에서는 이미지 인페인팅만 실행하고자 한다. 아래의 데이터셋을 다운로드 받아야 한다.
+1. [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
+2. [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans)
 
-After downloading, you should split the whole dataset to train, test and validation set and run `scripts/flist.py` to genrate corresponding file lists. For example, to generate the training set file list on the CelebA dataset, you should run:
+다운로드를 받은 이후엔, train, test, validation 을 각각 나눠서 설정해줘야 하며, [`scripts/flist.py`](scripts/flist.py)를 실행하여 관련된 파일 목록을 생성해줘야 한다.
+예를 들어 celebA 데이터셋의 파일목록을 생성하고 싶다면 아래를 실행시켜야 한다.
 ```
 mkdir datasets
 python3 ./scripts/flist.py --path path_to_celebA_train_set --output ./datasets/celeba_train_images.flist
 ```
 
-For CelebA-HQ dataset, we use its 256x256 version. For CelebA dataset, the original image will be center cropped then resized to 256x256 during training.
+CelebA-HQ 데이터셋의 경우도 마찬가지다.  다만, 본 연구에서는 256x256 사이즈의 이미지를 사용하고 기존 이미지에서 센터를 자른 이후에 리사이징을 해서 학습을 진행한다..
 
-#### 2) Landmarks:
-For CelebA and CelebA-HQ datasets, the landmarks given by the original dataset are not enough (only 5). So we apply [FAN](https://github.com/1adrianb/face-alignment) to generate landmarks as ground truth landmarks.
 
-You can run `scripts/preprocess_landmark.py` to generate landmarks of the images, then use `scripts/flist.py` to generate landmarks file list. For example, to generate the landmarks of the CelebA training images, you should run:
-```
-python3 ./scripts/preprocess_landmark.py --path path_to_CelebA_train_set --output path_to_the_celebA_landmark_train_set
-python3 ./scripts/flist.py --path path_to_celebA_landmark_train_set --output ./datasets/celeba_train_landmarks.flist
-```
-This may take a while.
+**2. 불규칙 혹은 랜덤 마스크 생성하기**
+본 모델에서는 학습을 위해서 랜덤하게 생성된 블록 마스크와 불규칙적 마스크를 조합적으로 사용한다.  불규칙적 마스크 데이터는 [Liu et al.](https://arxiv.org/abs/1804.07723)를 참고하여 활용한다.  해당 데이터셋은 [their website](http://masc.cs.gmu.edu/wiki/partialconv)에서 확인이 가능하다.
 
-#### 3) Irregular Masks:
-Our model is trained on a combination of random block masks and irregular masks. The irregular masks dataset provided by [Liu et al.](https://arxiv.org/abs/1804.07723) is available on [their website](http://masc.cs.gmu.edu/wiki/partialconv)
 
-Then use `scripts/flist.py` to generate train/test/validataion masks file lists as above.
+원하는 마스크 이미지를 생성한 다음엔, [`scripts/flist.py`](scripts/flist.py)를 사용해서 마스크 파일 목록을 생성해야 한다.
 
-### 2.Augmented Landmark Detection Part
-To validate the landmark detection augmented by inpainted images, please firstly download [WFLW](https://wywu.github.io/projects/LAB/WFLW.html) dataset provided by Wu et al.. 
 
-After downloading, run `scripts/preprocess_wflw.py` to generate train/test/validation images and landmarks then run `scripts/flist.py` to generate train/test file lists.
-```
-python3 ./scripts/preprocess_wflw.py --path  path_to_the_WFLW_images_folder --output path_to_the_output_folder --annotation_path path_to_the_WFLW_annotations_folder
-python3 ./scripts/flist.py --path path_to_the_wflw_train/test_images/landmarks_folder --output ./datasets/wflw_train/test_images/landmarks.flist 
-```
 
 Getting Started
 --------------------------
