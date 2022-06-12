@@ -3,21 +3,21 @@
 - 코드 및 논문은 "[LaFIn: Generative Landmark Guided Face Inpainting](https://arxiv.org/abs/1908.03852)" [PRCV](https://link.springer.com/chapter/10.1007/978-3-030-60633-6_2) 를 참조합니다.
 - 원 문서에 대한 설명은 [`origin_repo/README.md`](origin_repo/README.md) 파일에 저장되어 있다.
 
+
+
 ### 예시 결과물 (Inpainting results)
----------------------------------
 - 참고를 위한 인페인팅 결과물은 아래와 같습니다.
 
 ![image](lafin.png)
 
-Prerequisites
----------------------------------
-* Python 3.7
-* Pytorch 1.0
-* NVIDIA GPU + CUDA cuDNN
+### 필요한 라이브러리 (Prerequisites)
+1.Python 3.7
+2. Pytorch 1.0
+3. NVIDIA GPU + CUDA cuDNN
 
-Installation
+### 설치법 (Installation)
 ---------------------------------
-* Clone this repo:
+1. 본 저장소를 클론한다.
 ```
 git clone https://github.com/YaN9-Y/lafin
 cd lafin-master
