@@ -16,7 +16,6 @@
 3. NVIDIA GPU + CUDA cuDNN
 
 ### 설치법 (Installation)
----------------------------------
 1. 본 저장소를 클론한다.
 ```
 git clone https://github.com/Kang-ChangWoo/Modified_lafin.git
@@ -30,6 +29,8 @@ pip install -r requirements.txt
 
 ### 재현 (implementation)
 **1. 데이터셋 다운로드하기**
+
+
 원 논문에서는 1)이미지 인페인팅 부분과 2) 증강된 랜드마크 검출 파트가 나눠져 있지만, 본 과정에서는 이미지 인페인팅만 실행하고자 한다. 아래의 데이터셋을 다운로드 받아야 한다.
 1. [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
 2. [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans)
@@ -45,6 +46,8 @@ CelebA-HQ 데이터셋의 경우도 마찬가지다.  다만, 본 연구에서�
 
 
 **2. 불규칙 혹은 랜덤 마스크 생성하기**
+
+
 본 모델에서는 학습을 위해서 랜덤하게 생성된 블록 마스크와 불규칙적 마스크를 조합적으로 사용한다.  불규칙적 마스크 데이터는 [Liu et al.](https://arxiv.org/abs/1804.07723)를 참고하여 활용한다.  해당 데이터셋은 [their website](http://masc.cs.gmu.edu/wiki/partialconv)에서 확인이 가능하다.
 
 
