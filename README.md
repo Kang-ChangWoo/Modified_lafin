@@ -28,7 +28,8 @@ cd lafin-master
 pip install -r requirements.txt
 ```
 
-Datasets
+### 재현 (implementation)
+**1. 데이터셋 다운로드하기**
 ---------------------------------
 Our repo has two parts, 1)Image Inpainting Part and 2)Augmented Landmark Detection Part. If you only want to test Image Inpainting Part, you're safe to ignore the contents about Augmented Landmark Dectection Part.
 ### 1.Image Inpaint Part
@@ -131,26 +132,3 @@ Then run:
 python3 test.py --model 1 --checkpoints ./checkpoints/wflw
 ```
 to start testing the landmark detection model on WFLW. Set `MASK = 0` in `config.yml` to achieve the highest accuracy.
-
-
-Citation
-------------------------------------------
-If you use this code in your research, please cite our paper. 
-
-```
-@inproceedings{yang2020generative,
-  title={Generative Landmark Guided Face Inpainting},
-  author={Yang, Yang and Guo, Xiaojie},
-  booktitle={Chinese Conference on Pattern Recognition and Computer Vision (PRCV)},
-  pages={14--26},
-  year={2020},
-  organization={Springer}
-}
-
-@article{yang2019lafin,
-  title={Lafin: Generative landmark guided face inpainting},
-  author={Yang, Yang and Guo, Xiaojie and Ma, Jiayi and Ma, Lin and Ling, Haibin},
-  journal={arXiv preprint arXiv:1911.11394},
-  year={2019}
-}
-```
