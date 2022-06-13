@@ -12,16 +12,16 @@
 
 ### 필요한 라이브러리 (Prerequisites)
 ( **RTX 3090-24GB** 환경에서 구동하기 위한 설정입니다. )
-1. **Pytorch 1.11.0** (modified from Pytorch 1.0)
-2. **Python 3.9.5** (modified from Python 3.7)
-3. **NVIDIA GPU + CUDA 11.3** (modified from NVIDIA GPU + CUDA cuDNN)
+- **Pytorch 1.11.0** (modified from Pytorch 1.0)
+- **Python 3.9.5** (modified from Python 3.7)
+- **NVIDIA GPU + CUDA 11.3** (modified from NVIDIA GPU + CUDA cuDNN)
 
 그 외 버전에 영향 없는 라이브러리는 필요 시 설치해주시면 됩니다.
 
-4. Tensorboard
-5. Matlab
-6. Pandas
-7. Numpy
+- Tensorboard
+- Matlab
+- Pandas
+- Numpy
 
 
 
