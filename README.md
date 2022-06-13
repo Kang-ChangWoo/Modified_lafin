@@ -38,14 +38,12 @@ cd lafin-master
 **1. 데이터셋 다운로드 및 파일목록 생성하기**
 
 
-DGMS 강의 간 제공된 평가 데이터셋의 경우 600개의 이미지와 마스크로 구성되어 있고, 전처리가 필요하기 때문에 본 Git 저장소에 저장해뒀기 때문에 따로 저장할 필요가 없다. 
-1. [DGSM 평가 데이터](examples/images/000.png)
+DGMS 강의 간 제공된 평가 데이터셋의 경우 600개의 이미지와 마스크로 구성되어 있다.  하지만 모델을 테스트하기 위해선 전처리가 다소 필요하다.  때문에 본 저장소에 미리 컴퓨팅된 데이터를 업로드해놨기 때문에 따로 데이터를 다운받을 필요는 없다.
+- [DGSM 평가 데이터](examples/images/000.png)
 
 
-필요한 데이터의 파일 경로가 다르기 때문에 [`scripts/flist.py`](scripts/flist.py)에 `path`와 
+다운로드를 받은 이후엔, train, test, validation 을 각각 나눠서 설정해야 한다. 또한 필요한 데이터의 파일 경로가 다르기 때문에, [`scripts/flist.py`](scripts/flist.py)를 실행하여 관련된 파일 목록을 생성해줘야 한다.  예를 들어 celebA 데이터셋의 파일목록을 생성하고 싶다면 아래를 실행시켜야 한다.
 
-다운로드를 받은 이후엔, train, test, validation 을 각각 나눠서 설정해줘야 하며, [`scripts/flist.py`](scripts/flist.py)를 실행하여 관련된 파일 목록을 생성해줘야 한다.
-예를 들어 celebA 데이터셋의 파일목록을 생성하고 싶다면 아래를 실행시켜야 한다.
 ```
 mkdir datasets
 python3 ./scripts/flist.py --path path_to_DGMS-validation_train_set --output ./datasets/DGMS-validation_train_images.flist
@@ -56,8 +54,8 @@ python3 ./scripts/flist.py --path path_to_DGMS-validation_train_set --output ./d
 **2. 기학습된 네트워크 가중치 다운로드 받기**
 선행연구에서 제공되는 네트워크 가중치를 다운로드 받아야 한다.
 
-1. [CelebA pretrained weights](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G)
-2. [CelebA-HQ pretrained weights](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) 
+- [CelebA pretrained weights](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G)
+- [CelebA-HQ pretrained weights](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) 
 
 To use the pre-trained models, download them from the following links then copy them to corresponding checkpoints folder, like `./checkkpoints/celeba` or `./checkpoints/celeba-hq`.
 
