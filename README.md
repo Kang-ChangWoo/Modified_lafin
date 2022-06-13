@@ -26,7 +26,7 @@
 
 
 ### 설치법 (Installation)
-**1. 본 저장소를 클론합니다.**
+**1. 본 저장소를 클론한다.**
 ```
 git clone https://github.com/Kang-ChangWoo/Modified_lafin.git
 cd lafin-master
