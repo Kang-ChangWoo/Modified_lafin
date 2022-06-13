@@ -2,4 +2,4 @@
 checkpoints/examples/results/*
 checkpoints/*
 experiments/*
-#examples/*
+examples/masks_0/*
