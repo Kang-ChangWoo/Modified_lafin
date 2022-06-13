@@ -26,16 +26,13 @@
 
 
 ### 설치법 (Installation)
-1. 본 저장소를 클론한다.
+**1. 본 저장소를 클론한다.**
 ```
 git clone https://github.com/Kang-ChangWoo/Modified_lafin.git
 cd lafin-master
 ```
-* Install Pytorch
-* Install python requirements:
-```
-pip install -r requirements.txt
-```
+**2. 앞서서 언급된 필요한 라이브러리를 차례로 설치해준다.**
+
 
 ### 재현 (implementation)
 **1. 데이터셋 다운로드 및 파일목록 생성하기**
@@ -51,31 +48,22 @@ DGMS 강의 간 제공된 평가 데이터셋의 경우 600개의 이미지와 �
 예를 들어 celebA 데이터셋의 파일목록을 생성하고 싶다면 아래를 실행시켜야 한다.
 ```
 mkdir datasets
-python3 ./scripts/flist.py --path path_to_celebA_train_set --output ./datasets/celeba_train_images.flist
+python3 ./scripts/flist.py --path path_to_DGMS-validation_train_set --output ./datasets/DGMS-validation_train_images.flist
 ```
 
 
 
 **2. 기학습된 네트워크 가중치 다운로드 받기**
+선행연구에서 제공되는 네트워크 가중치를 다운로드 받아야 한다.
+
 1. [CelebA pretrained weights](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G)
 2. [CelebA-HQ pretrained weights](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) 
 
-CelebA-HQ 데이터셋의 경우도 마찬가지다.  다만, 본 연구에서는 256x256 사이즈의 이미지를 사용하고 기존 이미지에서 센터를 자른 이후에 리사이징을 해서 학습을 진행한다..
-
-
-**2. 불규칙 혹은 랜덤 마스크 생성하기**
-
-
-본 모델에서는 학습을 위해서 랜덤하게 생성된 블록 마스크와 불규칙적 마스크를 조합적으로 사용한다.  불규칙적 마스크 데이터는 [Liu et al.](https://arxiv.org/abs/1804.07723)를 참고하여 활용한다.  해당 데이터셋은 [their website](http://masc.cs.gmu.edu/wiki/partialconv)에서 확인이 가능하다.
-
-
-원하는 마스크 이미지를 생성한 다음엔, [`scripts/flist.py`](scripts/flist.py)를 사용해서 마스크 파일 목록을 생성해야 한다.
-
-
+To use the pre-trained models, download them from the following links then copy them to corresponding checkpoints folder, like `./checkkpoints/celeba` or `./checkpoints/celeba-hq`.
 
 Getting Started
 --------------------------
-To use the pre-trained models, download them from the following links then copy them to corresponding checkpoints folder, like `./checkkpoints/celeba` or `./checkpoints/celeba-hq`.
+
 
 [CelebA](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G) | [CelebA-HQ](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) | [WFLW](https://drive.google.com/open?id=1I2MzHre1U3wqTu5ZmGD36OiXPaNqlOKb)
 
