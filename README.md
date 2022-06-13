@@ -57,16 +57,14 @@ python3 ./scripts/flist.py --path path_to_DGMS-validation_train_set --output ./d
 - [CelebA pretrained weights](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G)
 - [CelebA-HQ pretrained weights](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) 
 
-To use the pre-trained models, download them from the following links then copy them to corresponding checkpoints folder, like `./checkkpoints/celeba` or `./checkpoints/celeba-hq`.
+기학습된 네트워크 가중치를 사용하기 위해서, 해당 데이터를 `./testing/` 위치에 저장해야 합니다.
 
-Getting Started
---------------------------
 
-### 0.Quick Testing
-To hold a quick-testing of our inpaint model, download our pre-trained models of CelebA-HQ and put them into `checkpoints/example`, then run:
+
+**3. DSGM 데이터셋 테스트하기**
+
+빠르게 테스트하기 위해서 아래 코드를 그대로 실행시켜주면 됩니다.
 ```
-python3 test.py --model 3 --checkpoints ./checkpoints/example
+python3 test.py --model 3 --checkpoints ./testing
 ```
-and check the results in `checkpoints/example/results`.
-
-Please notice that, as no face detector is applied at the landmark prediction stage, the landmark predictor is sensitive to the scale of face images. If you find the provided pre-trained model generalizes poorly on your own dataset, you may need to train your own model basing on your dataset.
+해당하는 결과는 `checkpoints/testing/results`에서 참고하실 수 있습니다.
