@@ -62,9 +62,6 @@ To use the pre-trained models, download them from the following links then copy 
 Getting Started
 --------------------------
 
-
-[CelebA](https://drive.google.com/open?id=1lGFEbxbtZwpPA9JXF-bhv12Tdi9Zt08G) | [CelebA-HQ](https://drive.google.com/open?id=1Xwljrct3k75_ModHCkwcNjJk3Fsvv-ra) | [WFLW](https://drive.google.com/open?id=1I2MzHre1U3wqTu5ZmGD36OiXPaNqlOKb)
-
 ### 0.Quick Testing
 To hold a quick-testing of our inpaint model, download our pre-trained models of CelebA-HQ and put them into `checkpoints/example`, then run:
 ```
@@ -73,53 +70,3 @@ python3 test.py --model 3 --checkpoints ./checkpoints/example
 and check the results in `checkpoints/example/results`.
 
 Please notice that, as no face detector is applied at the landmark prediction stage, the landmark predictor is sensitive to the scale of face images. If you find the provided pre-trained model generalizes poorly on your own dataset, you may need to train your own model basing on your dataset.
-
-### 1.Image Inpaint Part
-#### 1) Training 
-To train the model, create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
-
-The inpaint model is trained in two stages: 1) train the landmark prediction model, 2) train the image inpaint model. To train the model, run:
-
-```
-python train.py --model [stage] --checkpoints [path to checkpoints]
-``` 
-
-For example, to train the landmark prediction model on CelebA dataset, the checkpoints folder is `./checkpoints/celeba` folder, run:
-
-```
-python3 train.py --model 1 --checkpoints ./checkpoints/celeba
-```
-
-The number of training iterations can be changed by setting `MAX_ITERS` in `config.yml`.
-
-#### 2) Testing
-To test the model, create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
-
-
-The model can be tested in 3 stages (landmark prediction model, inpaint model(inpaint using ground-truth landmarks) and joint model(inpainting using predicted landmarks)).
-The file list of test images and landmarks can be generated using `scripts/flist.py` then set in the `config.yml` file. For testing stage 3, the test landmark file list is not needed.
-
-For example, to test the inpaint model on CelebA dataset under `./checkpoints/celeba` folder, run:
-```
-python3 test.py --model 2 --checkpoints ./checkpoints/celeba
-```
-### 2.Augmented Landmark Detection Part
-#### 1) Training
-We suppose you use WFLW dataset to validate the augmented landmark detection method.
-To validate the augmentation methods, a landmark-guided inpaint model trained on WFLW (stage 2) is needed. You can train it by yourself following above steps or use the pre-trained models.
-
-Create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoint folder. Following comments on `config.yml.example` to set `config.yml`.
-Remeber set `AUGMENTATION_TRAIN = 1` to enable augmentation with inpainted images, amd `LANDMARK_POINTS = 98` in `config.yml`.
-Then run:
-```
-python3 train.py --model 1 --checkpoints ./checkpoints/wflw
-```
-to start augmentated training.
-
-#### 2) Testing
-Create a `config.yml` file similar to `config.yml.example` and copy it to corresponding checkpoints folder. Following comments on `config.yml.example` to set `config.yml`.
-Then run:
-```
-python3 test.py --model 1 --checkpoints ./checkpoints/wflw
-```
-to start testing the landmark detection model on WFLW. Set `MASK = 0` in `config.yml` to achieve the highest accuracy.
