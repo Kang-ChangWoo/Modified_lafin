@@ -31,7 +31,11 @@
 git clone https://github.com/Kang-ChangWoo/Modified_lafin.git
 cd lafin-master
 ```
+
+
+
 **2. 앞서서 언급된 필요한 라이브러리를 차례로 설치한다.**
+
 
 
 ### 재현 (implementation)
